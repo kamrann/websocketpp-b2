@@ -1,0 +1,34 @@
+#pragma once
+
+// The numeric version format is AAAAABBBBBCCCCCDDDE where:
+//
+// AAAAA - major version number
+// BBBBB - minor version number
+// CCCCC - bugfix version number
+// DDD   - alpha / beta (DDD + 500) version number
+// E     - final (0) / snapshot (1)
+//
+// When DDDE is not 0, 1 is subtracted from AAAAABBBBBCCCCC. For example:
+//
+// Version      AAAAABBBBBCCCCCDDDE
+//
+// 0.1.0        0000000001000000000
+// 0.1.2        0000000001000020000
+// 1.2.3        0000100002000030000
+// 2.2.0-a.1    0000200001999990010
+// 3.0.0-b.2    0000299999999995020
+// 2.2.0-a.1.z  0000200001999990011
+//
+#define WEBSOCKETPP_VERSION       $websocketpp.version.project_number$ULL
+#define WEBSOCKETPP_VERSION_STR   "$websocketpp.version.project$"
+#define WEBSOCKETPP_VERSION_ID    "$websocketpp.version.project_id$"
+#define WEBSOCKETPP_VERSION_FULL  "$websocketpp.version$"
+
+#define WEBSOCKETPP_VERSION_MAJOR $websocketpp.version.major$
+#define WEBSOCKETPP_VERSION_MINOR $websocketpp.version.minor$
+#define WEBSOCKETPP_VERSION_PATCH $websocketpp.version.patch$
+
+#define WEBSOCKETPP_PRE_RELEASE   $websocketpp.version.pre_release$
+
+#define WEBSOCKETPP_SNAPSHOT_SN   $websocketpp.version.snapshot_sn$ULL
+#define WEBSOCKETPP_SNAPSHOT_ID   "$websocketpp.version.snapshot_id$"

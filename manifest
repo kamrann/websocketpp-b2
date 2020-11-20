@@ -1,0 +1,13 @@
+: 1
+name: websocketpp
+version: 0.8.2-a.1
+upstream-version: 0.8.2
+summary: WebSocket++
+license: other: proprietary ; Not free/open source.
+description-file: README.md
+url: https://github.com/zaphoyd/websocketpp
+package-url: https://github.com/kamrann/websocketpp-b2
+email: cjangus@gmail.com
+
+depends: * build2 >= 0.13.0
+depends: * bpkg >= 0.13.0

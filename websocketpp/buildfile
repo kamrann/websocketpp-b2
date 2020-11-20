@@ -1,0 +1,48 @@
+intf_libs = # Interface dependencies.
+impl_libs = # Implementation dependencies.
+#import impl_libs += todo: should this be marked with a dependency on asio? bit awkward since it's only a conditional dependency based on configuration. i guess we can model that.
+
+lib{websocketpp}: {hxx}{** -version} hxx{version} $impl_libs $intf_libs
+
+# Include the generated version header into the distribution (so that we don't
+# pick up an installed one) and don't remove it when cleaning in src (so that
+# clean results in a state identical to distributed).
+#
+hxx{version}: in{version} $src_root/manifest
+{
+  dist  = true
+  clean = ($src_root != $out_root)
+}
+
+# Build options.
+#
+cxx.poptions =+ "-I$out_base" "-I$src_base/upstream"
+
+# Export options.
+#
+lib{websocketpp}:
+{
+  cxx.export.poptions = "-I$src_base/upstream" #"-I$out_base"
+  cxx.export.libs = $intf_libs
+}
+
+upstream/test/
+{
+  {hxx ixx txx}{*}: install = false
+}
+upstream/cmake/
+{
+  {hxx ixx txx}{*}: install = false
+}
+
+# Install into the websocketpp/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+#
+upstream/
+{
+  {hxx}{*}:
+  {
+    install         = include/
+    install.subdirs = true
+  }
+}
